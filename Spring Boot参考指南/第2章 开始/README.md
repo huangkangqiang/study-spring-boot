@@ -31,3 +31,14 @@ Spring Boot可以跟经典的Java开发工具一起使用或安装成一个命�
 
 ### Gradle安装
 
+##　Spring Boot CLI安装
+
+Spring Boot CLI是一个命令行工具，可用于快速搭建基于Spring的原型。它支持Groovy脚本，这也意味着可以使用类似Java的语法，但不用写很多的模板代码。
+
+Spring Boot不一定非要配合CLI使用，但它绝对是Spring应用取得进展的最快方式。
+
+### 手动安装
+
+Spring CLI分发包可以从Spring软件仓库下载。
+
+下载完成后，解压，根据INSTALL.txt操作指南进行安装。
