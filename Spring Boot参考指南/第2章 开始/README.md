@@ -42,3 +42,33 @@ Spring Boot不一定非要配合CLI使用，但它绝对是Spring应用取得进
 Spring CLI分发包可以从Spring软件仓库下载。
 
 下载完成后，解压，根据INSTALL.txt操作指南进行安装。
+
+配置环境变量，使用一下命令可以查看CLI版本：
+
+> $ spring --version
+
+## Spring CLI实例快速入门
+
+通过以下一个相当简单的web应用，可以测试Spring CLI安装是否成功。创建一个名叫app.groovy的文件：
+
+```groovy
+@RestController
+class ThisWillActullyRun{
+
+    @RequestMapping("/")
+    String home(){
+        "Hello World!"
+    }
+    
+}
+```
+
+然后运行以下命令：
+
+> $ spring run app.groovy
+
+首次运行该应用将会花费一些时间，因为需要下载依赖，后续运行将会快很多。
+
+使用浏览器打开[localhost:8080](http://localhost:8080)，然后就能看到输出：
+
+> Hello World!
