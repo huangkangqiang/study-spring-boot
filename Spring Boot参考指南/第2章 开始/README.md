@@ -154,3 +154,36 @@ Spring Boot提供很多starters，用来简化添加jars到classpath的操作。
 
 再次运行`mvn dependency:tree`，可以看到多了一些其他依赖，包括Tomcat web服务器和Spring Boot自身。
 
+### 编写代码
+
+为了完成应用程序，需要创建一个单独的java文件。meven默认会编译src/main/java下的源码，所以需要创建相应的文件结构，并添加一个名为src/main/java/Example.java的文件：
+
+```java
+import org.springframework.boot.*;
+import org.springframework.boot.autoconfigure.*;
+import org.springframework.stereotype.*;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@EnableAutoConfiguration
+public class Example {
+
+    @RequestMapping("/")
+    String home() {
+        return "Hello World!";
+    }
+
+    public static void main(String[] args) throws Exception {
+        SpringApplication.run(Example.class, args);
+    }
+
+}
+```
+
+####　@RestController和@RequestMapping
+
+@RestController，这被称为构造型（stereotype）注解。它为阅读代码的人提供暗示（这是一个支持REST的控制器），对于Spring，该类扮演了一个特殊角色。Example类是一个web @Controller，所以当web请求进来时，Spring会考略是否使用它进行处理。
+
+@RequestMapping注解提供路由信息，它告诉Spring任何来自"/"路径的HTTP请求都应该被映射到`home`方法。@RestController注解告诉Spring以字符串的形式渲染结果，并直接返回给调用者。
+
+
