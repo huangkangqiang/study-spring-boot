@@ -186,4 +186,10 @@ public class Example {
 
 @RequestMapping注解提供路由信息，它告诉Spring任何来自"/"路径的HTTP请求都应该被映射到`home`方法。@RestController注解告诉Spring以字符串的形式渲染结果，并直接返回给调用者。
 
+#### @EnableAutoConfiguration
+
+第二个类级别的注解是@EnableAutoConfiguration，这个注解告诉spring boot根据添加的jar依赖猜测如何配置spring。由于`spring-boot-starter-web`添加了tomcat和spring mvc，所以`auto-configuration`将假定正在开发一个web应用，并对spring进行相应的设置。
+
+starters和Auto-Configuration：Auto-Configuration设计成可以跟starters一起很好的使用，但这两个概念没有直接的联系。你可以自由地挑选starters以外的jar依赖，spring boot仍会尽最大努力去自动配置你的应用。
+
 
