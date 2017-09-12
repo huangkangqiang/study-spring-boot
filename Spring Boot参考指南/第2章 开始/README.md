@@ -72,3 +72,61 @@ class ThisWillActullyRun{
 使用浏览器打开[localhost:8080](http://localhost:8080)，然后就能看到输出：
 
 > Hello World!
+
+## 开发你的第一个Spring Boot应用
+
+项目采用Maven进行构建，因为大多数ide都支持。
+
+项目开始之前，先查看jdk和maven版本是否可用：
+
+> $ java -version
+
+> $ mvn -v
+
+### 创建pom
+
+```xml
+<?xml version="1.0" encoding="UTF-8">
+<project 
+    xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId>
+    <artifactId>myproject</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.1.BUILD-SNAPSHOT</version>
+    </parent>
+    <!-- Additional lines to be added here... -->
+    <!-- (you don't need this if you are using a .RELEASE version) -->
+    <repositories>
+        <repository>
+            <id>spring-snapshots</id>
+            <url>http://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <url>http://repo.spring.io/milestone</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <url>http://repo.spring.io/snapshot</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <url>http://repo.spring.io/milestone</url>
+        </pluginRepository>
+    </pluginRepositories>
+</project>
+```
+
+目前为止，一个可工作的构建就完成了。可以通过`mvn package`测试。
+
+可以将项目导入到ide中。
