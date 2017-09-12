@@ -130,3 +130,27 @@ class ThisWillActullyRun{
 目前为止，一个可工作的构建就完成了。可以通过`mvn package`测试。
 
 可以将项目导入到ide中。
+
+### 添加classpath依赖
+
+Spring Boot提供很多starters，用来简化添加jars到classpath的操作。示例程序中已经在pom的parent节点使用了`spring-boot-starter-parent`，它是一个特殊的starter，提供了有用的Maven默认配置。同时，它也提供了一个`dependency-management`节点，这样对于期望的依赖就可以省略`version`标记了。
+
+查看下目前的依赖：
+
+> $ mvn dependency:tree
+
+其他starters只简单提供开发特定类型应用所需的依赖。由于正在开发web应用，我们将添加`spring-boot-starter-web`依赖。
+
+`mvn dependency:tree`命令可以将项目依赖以树形方式展现出来，可以看到`spring-boot-starter-parent`本身并没有提供依赖。添加`spring-boot-starter-web`依赖：
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+</dependencies>
+```
+
+再次运行`mvn dependency:tree`，可以看到多了一些其他依赖，包括Tomcat web服务器和Spring Boot自身。
+
