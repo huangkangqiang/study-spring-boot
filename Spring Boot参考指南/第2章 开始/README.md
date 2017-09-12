@@ -196,3 +196,10 @@ starters和Auto-Configuration：Auto-Configuration设计成可以跟starters一�
 
 应用程序的最后部分是main方法，这是一个标准的方法，它遵循java对于一个应用程序入口的约定。我们的main方法通过调用`run`，将业务委托给了spring boot的SpringApplication类。SpringApplication将引导应用，启动spring，相应地启动被自动配置的tomcat web服务器，我们需要将Example.class作为参数传递给run方法，以此告诉SpringApplication谁是主要的spring组件，并传递args数组以暴露所有的命令行参数。
 
+### 运行示例
+
+由于使用了`spring-boot-starter-parent`，这样就有一个非常有用的run目标来启动程序。在项目根目录下输入`mvn spring-boot:run`启动应用。
+
+使用浏览器打开[localhost:8080](http://localhost:8080)，就可以看到输出`Hello World!`
+
+使用`ctrl-c`可以关闭应用程序。
