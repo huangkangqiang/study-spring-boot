@@ -192,4 +192,7 @@ public class Example {
 
 starters和Auto-Configuration：Auto-Configuration设计成可以跟starters一起很好的使用，但这两个概念没有直接的联系。你可以自由地挑选starters以外的jar依赖，spring boot仍会尽最大努力去自动配置你的应用。
 
+#### main方法
+
+应用程序的最后部分是main方法，这是一个标准的方法，它遵循java对于一个应用程序入口的约定。我们的main方法通过调用`run`，将业务委托给了spring boot的SpringApplication类。SpringApplication将引导应用，启动spring，相应地启动被自动配置的tomcat web服务器，我们需要将Example.class作为参数传递给run方法，以此告诉SpringApplication谁是主要的spring组件，并传递args数组以暴露所有的命令行参数。
 
