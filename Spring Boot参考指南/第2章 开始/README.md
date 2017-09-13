@@ -203,3 +203,36 @@ starters和Auto-Configuration：Auto-Configuration设计成可以跟starters一�
 使用浏览器打开[localhost:8080](http://localhost:8080)，就可以看到输出`Hello World!`
 
 使用`ctrl-c`可以关闭应用程序。
+
+### 创建可执行jar
+
+可执行jars是包含编译后的类及代码运行所依赖jar的存档。
+
+可执行jars和java：java没有提供任何标准方式，用于加载内嵌jar文件（即jar文件中还包含jar文件），这对分发自包含应用来说是个问题。为了解决该问题，很多开发者采用共享的jars。共享的jar只是简单地讲所有jars的类打包进一个单独的存档，这种方式存在的问题是，很难区分应用程序使用了哪些库。在多个jars中如果存在相同的文件名也会是一个问题。
+
+spring boot采取一个不同的方式，允许真正的内嵌jars。
+
+为了创建可执行的jar，我们需要将`spring-boot-maven-plugin`添加到pom.xml中，在dependencies节点后面插入一下内容：
+
+```xml
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframewok.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.4.1.RELEASE</version>
+            </plugin>
+        </plugins>
+    </build>
+```
+
+注意：spring-boot-starter-parent包含绑定到repackage目标的<executions>配置。如果不使用parent，需要自声明该配置。
+
+> $ mvn package
+
+查看target目录，可以看到打包好的jar包，想看内部结构，可以运行
+
+> $ jar tvf target/myproject-0.0.1-SNAPSHOT.jar
+
+可以使用`java -jar`运行该程序
