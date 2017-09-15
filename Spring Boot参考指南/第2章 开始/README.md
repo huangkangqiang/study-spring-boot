@@ -236,3 +236,6 @@ spring boot采取一个不同的方式，允许真正的内嵌jars。
 > $ jar tvf target/myproject-0.0.1-SNAPSHOT.jar
 
 可以使用`java -jar`运行该程序
+
+[maven插件使用](https://docs.spring.io/spring-boot/docs/1.4.1.BUILD-SNAPSHOT/maven-plugin/usage.html)
+

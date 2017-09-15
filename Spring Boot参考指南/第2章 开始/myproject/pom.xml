@@ -20,22 +20,14 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframewok.boot</groupId>
+                <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>1.4.1.RELEASE</version>
+                <version>1.4.1.BUILD-SNAPSHOT</version>
                 <executions>
                     <execution>
-                        <phase>package</phase>
                         <goals>
-                            <goal>shade</goal>
+                            <goal>repackage</goal>
                         </goals>
-                        <configuration>
-                            <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.example.Example</mainClass>
-                                </transformer>
-                            </transformers>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
