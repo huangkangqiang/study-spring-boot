@@ -13,3 +13,16 @@ spring boot每次发布时都会提供一个它所支持的精选依赖列表。
 精选列表包括所有能够跟spring boot一起使用的spring模块及第三方库，该列表可以在spring-boot-dependencies中获取到。
 
 >spring boot每次发布都会关联一个spring框架的基础版本，所以建议不要自己指定spring版本。
+
+### Maven
+
+maven用户可以继承spring-boot-starter-parent项目来获取合适的默认设置。该parent项目提供一下特性：
+
++ 默认编译级别为java 1.6
++ 源码编码为UTF-8
++ 一个dependency management节点，允许省略常见依赖的<version>标签，继承自spring-boot-dependencies pom
++ 恰到好处的资源过滤
++ 恰到好处的插件配置（exec插件，surefire，git commit id，shade）
++ 恰到好处的对application.properties和application.yml进行筛选，包括特定的profile（profile-specific）的文件，比如application-foo.properties和application-foo.yml。
+
+最后一点：由于配置文件默认接收spring锋哥的占位符`${...}`，所以maven filtering需改用`@...@`占位符（你可以使用maven属性resource.delimiter来覆盖它）。
