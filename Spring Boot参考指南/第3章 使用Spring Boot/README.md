@@ -26,3 +26,25 @@ maven用户可以继承spring-boot-starter-parent项目来获取合适的默认�
 + 恰到好处的对application.properties和application.yml进行筛选，包括特定的profile（profile-specific）的文件，比如application-foo.properties和application-foo.yml。
 
 最后一点：由于配置文件默认接收spring锋哥的占位符`${...}`，所以maven filtering需改用`@...@`占位符（你可以使用maven属性resource.delimiter来覆盖它）。
+
+#### 继承starter parent
+
+配置项目，让其继承自spring-boot-starter-parent，配置如下：
+
+```xml
+<parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.4.1.BUILD-SNAPSHOT</version>
+</parent>
+```
+
+> 只需在该依赖上指定spring boot版本，如果导入其他的starters，可以省略版本号。
+
+按照以上配置，可以在项目中通过覆盖属性来覆盖个别的依赖。例如，可以在pom中设置，将spring data升级到另一个版本。
+
+```xml
+<properties>
+    <spring-data-releasetrain.version>Fowler-SR2</spring-data-releasetrain.version>
+</properties>
+```
