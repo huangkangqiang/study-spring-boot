@@ -48,3 +48,13 @@ maven用户可以继承spring-boot-starter-parent项目来获取合适的默认�
     <spring-data-releasetrain.version>Fowler-SR2</spring-data-releasetrain.version>
 </properties>
 ```
+
+#### 改变java版本
+
+spring-boot-starter-parent选择了相当保守的java兼容策略，如果使用最新的java版本，可以添加一个java.version属性：
+
+```xml
+<properties>
+    <java.version>1.8</version>
+</properties>
+```
