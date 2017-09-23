@@ -76,3 +76,10 @@ spring boot包含一个maven插件，它可以将项目打包成一个可执行j
 
 注意：如果使用spring boot parent pom，只需添加该插件而无需配置它，除非需要改变定义在parent中的设置。
 
+## 组织代码
+
+### 使用"default"包
+
+当类没有生命package时，它被认为处于default package下。通常不推荐使用default package，因为对于使用@ComponentScan，@EntityScan或@SpringBootApplication注解的spring boot应用来说，它会扫描每个jar中的类，这会造成一定问题。
+
+> 建议遵循java推荐的包命名规范，使用一个翻转的域名（com.example.project）。
