@@ -58,3 +58,21 @@ spring-boot-starter-parent选择了相当保守的java兼容策略，如果使�
     <java.version>1.8</version>
 </properties>
 ```
+
+#### 使用spring boot maven插件
+
+spring boot包含一个maven插件，它可以将项目打包成一个可执行jar，可以将该插件添加到<plugin>节点：
+
+```xml
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin<artifactId>
+        </plugin>
+    <plugins>
+</build>
+```
+
+注意：如果使用spring boot parent pom，只需添加该插件而无需配置它，除非需要改变定义在parent中的设置。
+
