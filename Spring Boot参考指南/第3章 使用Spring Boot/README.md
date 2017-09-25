@@ -83,3 +83,31 @@ spring boot包含一个maven插件，它可以将项目打包成一个可执行j
 当类没有生命package时，它被认为处于default package下。通常不推荐使用default package，因为对于使用@ComponentScan，@EntityScan或@SpringBootApplication注解的spring boot应用来说，它会扫描每个jar中的类，这会造成一定问题。
 
 > 建议遵循java推荐的包命名规范，使用一个翻转的域名（com.example.project）。
+
+### 放置应用的main类
+
+通常建议将应用的main类放到其他类所在包的顶层，并将@EnableAutoConfiguration注解到main类，这样就隐式地定义了一个基础的包搜索路径，以搜索某些特定的注解实体（比如@Service，@Controller等）。例如，一个jpa应用，Spring将搜索@EnableAutoConfiguration注解的类所在包下的@Entity实体。
+
+采用root package的方式，就可以使用@ComponentScan注解而不需要指定basePackage属性，也可以使用@SpringBootApplication注解，只要将main类放到root package中。
+
+Application.java将声明main方法，还有基本的@Configuration。
+
+```java
+package com.example.myproject;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@EnableAutoConfiguration
+@ComponentScan
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
+}
+```
