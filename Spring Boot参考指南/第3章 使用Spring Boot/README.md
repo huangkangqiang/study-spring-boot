@@ -111,3 +111,13 @@ public class Application {
 
 }
 ```
+
+## 配置类
+
+spring boot提倡基于java的配置。尽管可以使用xml调用SpringApplication.run()，不过还是建议你使用@Configuration类作为主要配置源。通常定义了main方法的类也是使用@Configuration注解的一个很好的替补。
+
+> 虽然网上有很多使用xml配置的spring示例，建议尽可能的使用基于java的配置，搜索查看`enable*`注解就是一个很好的开端。
+
+### 导入其他配置类
+
+不需要将所有的@Configuration放进一个单独的类，@Import注解可以用来导入其他配置类。另外，可以使用@ComponentScan注解自动搜集所有spring组件，包括@Configuration类。
