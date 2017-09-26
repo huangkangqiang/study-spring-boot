@@ -126,3 +126,11 @@ spring boot提倡基于java的配置。尽管可以使用xml调用SpringApplicat
 
 如果必须使用xml配置，建议从一个@Configuration类开始，然后使用@ImportResource注解加载xml配置文件。
 
+## 自动配置
+
+spring boot自动配置尝试根据添加的jar依赖自动配置到spring应用。例如，如果classpath下存在HSQLDB，并且没有手动配置任何数据库连接的beans，那么spring boot将自动配置一个内存型数据库。
+
+实现自动配置有两种可选方式，分别是将@EnableAutoConfiguration或@SpringBootApplication注解到@Configuration类上。
+
+> 建议只添加一个@EnableAutoConfiguration注解，通常建议将它添加到主配置类上。
+
