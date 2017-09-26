@@ -121,3 +121,8 @@ spring boot提倡基于java的配置。尽管可以使用xml调用SpringApplicat
 ### 导入其他配置类
 
 不需要将所有的@Configuration放进一个单独的类，@Import注解可以用来导入其他配置类。另外，可以使用@ComponentScan注解自动搜集所有spring组件，包括@Configuration类。
+
+### 导入xml配置
+
+如果必须使用xml配置，建议从一个@Configuration类开始，然后使用@ImportResource注解加载xml配置文件。
+
