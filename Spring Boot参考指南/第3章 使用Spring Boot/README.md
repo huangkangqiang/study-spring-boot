@@ -140,3 +140,21 @@ spring boot自动配置尝试根据添加的jar依赖自动配置到spring应用
 
 如果需要查看当前应用启动了哪些配置项，可以在运行应用时打开 --debug 开关，这将为核心日志开启dubug日志级别，并将自动配置相关的日志输出到控制台。
 
+### 禁用特定的自动配置项
+
+如果发现启用了不想要的自动配置项，可以使用@EnableAutoConfiguration注解的exclude属性禁用它们：
+
+```java
+import org.springframework.boot.autoconfigure.*;
+import org.springframework.boot.autoconfigure.jdbc.*;
+import org.springframework.context.annotation.*;
+
+@Configuration
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+public class MyConfiguration {
+}
+```
+
+如果该类不在classpath中，可以使用该注解的excludeName属性，并指定全限定名来达到相同效果。最后，可以通过spring.autoconfigure.exclude属性exclude多个自动配置项。
+
+> 通过注解级别或exclude属性都可以定义排除项。
