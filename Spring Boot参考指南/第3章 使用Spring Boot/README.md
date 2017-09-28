@@ -158,3 +158,33 @@ public class MyConfiguration {
 如果该类不在classpath中，可以使用该注解的excludeName属性，并指定全限定名来达到相同效果。最后，可以通过spring.autoconfigure.exclude属性exclude多个自动配置项。
 
 > 通过注解级别或exclude属性都可以定义排除项。
+
+## spring beans和依赖注入
+
+可以自由地使用任何标准的spring框架技术去定义beans和它们注入的依赖。简单起见，经常使用@ComponentScan注解搜索beans，并结合@Autowired构造器注入。
+
+如果遵循以上的建议组织代码结构（将应用的main类放到包的最上层，即root package），那么就可以添加@ComponentScan注解而不需要任何参数，所有应用组件（@Component，@Service，@Repository，@Controller等）都会自动注册成spring beans。
+
+下面是一个@Service bean的示例，它使用构造器注入获取一个需要的RiskAssessor bean。
+
+```java
+package com.example.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class DatabaseAccountService implements AccountService {
+
+    private final RiskAssessor riskAssessor;
+
+    @Autowired
+    public DatabaseAccountService(RiskAssessor riskAssessor) {
+        this.riskAssessor = riskAssessor;
+    }
+
+    // ...
+}
+```
+
+> 注意使用构造器注入允许riskAssessor字段被标记为final，这意味着riskAssessor后续是不能改变的。
