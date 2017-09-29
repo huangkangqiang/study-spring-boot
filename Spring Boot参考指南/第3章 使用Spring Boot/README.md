@@ -212,3 +212,9 @@ public class Application {
 ```
 
 > @SpringBootApplication注解提供了用于自定义@EnableAutoConfiguration和@ComponentScan属性的别名。
+
+运行应用程序
+
+将应用打包成jar，并使用内嵌http服务器的一个最大好处是，你可以像其他方式那样运行你的应用程序。调试Spring Boot应用也很简单，都不需要任何特殊IDE插件或扩展。
+
+> 本章节只覆盖基于jar的打包，如果选择将应用打包成war文件，最好参考相关的服务器和IDE文档。
