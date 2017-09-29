@@ -188,3 +188,27 @@ public class DatabaseAccountService implements AccountService {
 ```
 
 > 注意使用构造器注入允许riskAssessor字段被标记为final，这意味着riskAssessor后续是不能改变的。
+
+## 使用@SpringBootApplication注解
+
+经常使用@Configuration，@EnableAutoConfiguration，@ComponentScan注解的main类，Spring Boot提供了一个方便的@SpringBootApplication注解代替。
+
+@SpringBootAppliction注解等价于默认属性使用@Configuration，@EnableAutoConfiguration和@ComponentScan
+
+```java
+package com.example.myproject;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication // same as @Configuration @EnableAutoConfiguration @ComponentScan
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
+}
+```
+
+> @SpringBootApplication注解提供了用于自定义@EnableAutoConfiguration和@ComponentScan属性的别名。
